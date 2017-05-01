@@ -11,17 +11,20 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        # Method 1 時間複雜度是O(n^2)
+        # twosumDict = collections.defaultdict(int)
+        # for ind in range(len(nums)):
+        #     for anotherInd in range(ind+1, len(nums)):                
+        #         if nums[ind] + nums[anotherInd] == target:
+        #             return ([ind, anotherInd])
         
-        twosumDict = collections.defaultdict(int)
-        for ind in range(len(nums)):
-            for anotherInd in range(ind+1, len(nums)):                
-                if nums[ind] + nums[anotherInd] == target:
-                    return ([ind, anotherInd])
-        #         twosumDict[(ind, anotherInd)] = nums[ind] + nums[anotherInd]
-                
-        # print(twosumDict)
-        # for key, value in twosumDict.items():
-        #     if value == target:
-        #         return list(key)
+        # Method 2 時間複雜度O(n)
+        valIndexDict = collections.defaultdict(int)
+        for i in range(len(nums)):
+            current = nums[i]
+            if target - current in valIndexDict:
+                return [valIndexDict[target-current], i]
+            valIndexDict[current] = i
 test = Solution()
-print(test.twoSum( [2, 7, 11, 15], 9))       
+# print(test.twoSum( [2, 7, 11, 15], 9))
+print(test.twoSum( [0,1,2,0], 0))       
