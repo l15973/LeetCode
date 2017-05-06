@@ -12,13 +12,13 @@ class Solution(object):
         :rtype: List[int]
         """
         # Method 1 時間複雜度是O(n^2)
-        # twosumDict = collections.defaultdict(int)
-        # for ind in range(len(nums)):
-        #     for anotherInd in range(ind+1, len(nums)):                
-        #         if nums[ind] + nums[anotherInd] == target:
-        #             return ([ind, anotherInd])
+        twosumDict = collections.defaultdict(int)
+        for ind in range(len(nums)):
+            for anotherInd in range(ind+1, len(nums)):                
+                if nums[ind] + nums[anotherInd] == target:
+                    return ([ind, anotherInd])
         
-        # Method 2 時間複雜度O(n)
+        # Method 2 時間複雜度O(n)   使用HashTable
         valIndexDict = collections.defaultdict(int)
         for i in range(len(nums)):
             current = nums[i]
